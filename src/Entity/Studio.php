@@ -21,6 +21,9 @@ class Studio
     #[ORM\OneToMany(mappedBy: "studio", targetEntity: Artist::class)]
     private Collection $artists;
 
+    #[ORM\OneToMany(mappedBy: "studio", targetEntity: Client::class)]
+    private Collection $clients;
+
     #[ORM\Column(name: "type", type: Types::STRING)]
     private StudioTypeEnum $type;
 
@@ -37,6 +40,7 @@ class Studio
     public function __construct()
     {
         $this->artists = new ArrayCollection();
+        $this->clients = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -47,6 +51,11 @@ class Studio
     public function getArtists(): Collection
     {
         return $this->artists;
+    }
+
+    public function getClients(): Collection
+    {
+        return $this->clients;
     }
 
     public function addArtist(Artist $artist): self
