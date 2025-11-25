@@ -25,6 +25,9 @@ class Client
     #[ORM\Column(nullable: false)]
     private string $phoneNumber;
 
+    #[ORM\Column(type: "string", nullable: true)]
+    private ?string $photo = null;
+
     #[ORM\Column(nullable: false)]
     private \DateTimeImmutable $createdAt;
 
